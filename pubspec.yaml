@@ -74,6 +74,7 @@ flutter:
     - assets/images/trainer_image_id_10.jpg
     - assets/images/trainer_image_id_11.jpg
     - assets/images/trainer_image_id_12.jpg
+    - assets/images/trainer_image_default.jpg
     - assets/images/like_icon.svg
     - assets/images/arrow_back.svg
     - assets/images/heart_outlined.svg
