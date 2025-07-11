@@ -3,13 +3,13 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 //реализация через markdown
 class AboutTrainerListItems extends StatelessWidget {
-  final String sportTypesList;
-  const AboutTrainerListItems({super.key, required this.sportTypesList});
+  final String trainerDescription;
+  const AboutTrainerListItems({super.key, required this.trainerDescription});
 
   @override
   Widget build(BuildContext context) {
     return Markdown(
-      data: sportTypesList,
+      data: trainerDescription,
       styleSheet: MarkdownStyleSheet(
         blockSpacing: 10,
         p: TextStyle(
