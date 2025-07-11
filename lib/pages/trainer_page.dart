@@ -51,7 +51,7 @@ class TrainerPage extends ConsumerWidget {
                   trainerType: trainerItem.first.trainerType,
                 ),
                 SizedBox(height: 18),
-                AboutTrainerListItems(sportTypesList: trainerItem.first.description),
+                if(trainerItem.first.description != '' || trainerItem.first.description != null)...[AboutTrainerListItems(sportTypesList: trainerItem.first.description)],
               ],
             ),
           ),
