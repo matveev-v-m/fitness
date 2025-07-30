@@ -4,13 +4,20 @@ class NavigateButton extends StatelessWidget {
   final String text;
   final GlobalKey targetKey;
 
-  const NavigateButton({super.key, required this.text, required this.targetKey});
+  const NavigateButton({
+    super.key,
+    required this.text,
+    required this.targetKey,
+  });
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        side: const BorderSide(color: Color.fromARGB(255, 174, 199, 241), width: 2),
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outline,
+          width: 2,
+        ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(52)),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         textStyle: const TextStyle(fontSize: 13),
@@ -18,7 +25,7 @@ class NavigateButton extends StatelessWidget {
         foregroundColor: Colors.black,
       ),
       onPressed: () => _scrollToSection(context),
-      child: Text(text),
+      child: Text(text, style: Theme.of(context).textTheme.titleMedium),
     );
   }
 

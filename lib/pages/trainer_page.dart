@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_fitness_project/state.dart';
 import 'package:my_fitness_project/widgets/about_trainer.dart';
 import 'package:my_fitness_project/widgets/about_trainer_list_item.dart';
 import 'package:my_fitness_project/widgets/like_toggle_button.dart';
+
+import '../generated/icons/custom_icons.dart';
+import '../generated/l10n.dart';
 
 class TrainerPage extends ConsumerWidget {
   const TrainerPage({super.key});
@@ -31,13 +33,10 @@ class TrainerPage extends ConsumerWidget {
               ),
               IconButton(
                 onPressed: () => {Navigator.pop(context)},
-                icon: SvgPicture.asset(
-                  "assets/images/arrow_back.svg",
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                    Color.fromARGB(255, 255, 255, 255),
-                    BlendMode.srcIn,
-                  ),
+                icon: Icon(
+                  CustomIcons.arrow_back,
+                  size: 12,
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
             ],
@@ -69,7 +68,7 @@ class TrainerPage extends ConsumerWidget {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              color: Color.fromARGB(255, 174, 199, 241),
+              color: Theme.of(context).colorScheme.outline,
               width: 2,
             ),
           ),
@@ -82,19 +81,19 @@ class TrainerPage extends ConsumerWidget {
               child: LikeToggleButton(trainerId: trainerId as int),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 33),
+              padding: const EdgeInsets.only(right: 33), //todo доелать
               child: Row(
                 children: [
                   Icon(
-                    Icons.share_outlined,
-                    color: Color.fromARGB(255, 30, 111, 254),
+                    CustomIcons.share,
+                    size: 17,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
+                  SizedBox(width: 5),
                   Text(
-                    'Поделиться',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300,
-                      color: Color.fromARGB(255, 30, 111, 254),
+                    S.of(context).share,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],

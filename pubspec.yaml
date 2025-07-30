@@ -37,6 +37,12 @@ dependencies:
   flutter_riverpod: ^2.6.1
   flutter_svg: ^2.2.0
   flutter_markdown: ^0.7.7+1
+  intl: ^0.20.2
+  intl_utils: ^2.8.11
+  timezone: ^0.10.1
+  flutter_localizations:
+    sdk: flutter
+  golden_toolkit: ^0.15.0
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +67,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:    
+  assets:
     - assets/images/trainer_image_id_1.jpg
     - assets/images/trainer_image_id_2.jpg
     - assets/images/trainer_image_id_3.jpg
@@ -79,12 +85,17 @@ flutter:
     - assets/images/arrow_back.svg
     - assets/images/heart_outlined.svg
   
+  
   fonts:
+    - family: custom_icon
+      fonts:
+        - asset: assets/fonts/custom_icon.ttf
+
     - family: Granate
       fonts:
         - asset: assets/fonts/Granate_VF.ttf
-          weight: 400
-
+  
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

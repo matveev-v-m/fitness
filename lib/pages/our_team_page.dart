@@ -1,8 +1,10 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_fitness_project/widgets/favorite_trainers_section.dart';
+import 'package:my_fitness_project/generated/icons/custom_icons.dart';
 import 'package:my_fitness_project/widgets/trainers_section.dart';
+
+import '../generated/l10n.dart';
 import '../widgets/custom_input.dart';
 import '../widgets/navigate_bar.dart';
 
@@ -32,15 +34,14 @@ class OurTeamPage extends StatelessWidget {
                 curve: Curves.easeOut,
               ),
             },
-            icon: SvgPicture.asset(
-              "assets/images/arrow_back.svg",
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(Color.fromARGB(255, 0, 0, 0), BlendMode.srcIn),
-            ),
+            icon: Icon(CustomIcons.arrow_back, size: 12),
           ),
         ),
         centerTitle: true,
-        title: Text("НАША КОМАНДА"),
+        title: Text(
+          S.of(context).our_team,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         flexibleSpace: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -59,6 +60,7 @@ class OurTeamPage extends StatelessWidget {
                 const CustomInput(),
                 const SizedBox(height: 15),
                 NavigateBar(
+                  //todo перенести в appbar
                   sectionKeys: {
                     "БАССЕЙН": poolKey,
                     "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
@@ -70,23 +72,118 @@ class OurTeamPage extends StatelessWidget {
               ],
             ),
           ),
+
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 22),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(height: 21),
-                FavoriteTrainersSection(sectionTitle: "ЛЮБИМЫЕ СПЕЦИАЛИСТЫ"),
-                TrainersSection(
-                  sectionKeys: {
-                    "БАССЕЙН": poolKey,
-                    "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
-                    "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
-                    "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
-                  },
-                ),
-              ],
+            padding: const EdgeInsets.only(left: 19, right: 19),
+            child: TrainersSection(
+              sectionKeys: {
+                "БАССЕЙН": poolKey,
+                "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
+                "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
+                "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SliverOurTeamPage extends StatelessWidget {
+  SliverOurTeamPage({super.key});
+
+  final GlobalKey poolKey = GlobalKey();
+  final GlobalKey gymKey = GlobalKey();
+  final GlobalKey kidsKey = GlobalKey();
+  final GlobalKey groupKey = GlobalKey();
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 160,
+            floating: true,
+            snap: true,
+            elevation: 0,
+            centerTitle: true,
+            surfaceTintColor: Colors.transparent,
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: IconButton(
+                onPressed: () => {
+                  _scrollController.animateTo(
+                    0,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                  ),
+                },
+                icon: Icon(CustomIcons.arrow_back, size: 12),
+              ),
+            ),
+            title: Text(
+              S.of(context).our_team,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+
+            // flexibleSpace: FlexibleSpaceBar(
+            //   collapseMode: CollapseMode.pin,
+            //   background: Padding(
+            //     padding: const EdgeInsets.only(left: 10),
+            //     child: Align(
+            //       alignment: Alignment.bottomLeft,
+            //       child: Column(
+            //         mainAxisAlignment: MainAxisAlignment.end,
+            //         children: [
+            //           const CustomInput(),
+            //           const SizedBox(height: 15),
+            //           NavigateBar(
+            //             sectionKeys: {
+            //               "БАССЕЙН": poolKey,
+            //               "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
+            //               "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
+            //               "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
+            //             },
+            //           ),
+            //           const SizedBox(height: 15),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(105),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const CustomInput(),
+                  const SizedBox(height: 15),
+                  NavigateBar(
+                    sectionKeys: {
+                      "БАССЕЙН": poolKey,
+                      "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
+                      "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
+                      "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                ],
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.only(left: 19, right: 19),
+            sliver: SliverTrainersSection(
+              sectionKeys: {
+                "БАССЕЙН": poolKey,
+                "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
+                "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
+                "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
+              },
             ),
           ),
         ],

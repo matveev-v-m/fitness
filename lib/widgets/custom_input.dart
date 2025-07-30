@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_fitness_project/state.dart';
 
+import '../generated/icons/custom_icons.dart';
+import '../generated/l10n.dart';
+
 class CustomInput extends ConsumerWidget {
   const CustomInput({super.key});
 
@@ -12,13 +15,17 @@ class CustomInput extends ConsumerWidget {
       child: Container(
         height: 45,
         decoration: BoxDecoration(
+          //todo переделать
           color: const Color.fromARGB(255, 219, 224, 234),
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(12),
             topRight: Radius.circular(12),
           ),
-          border: const Border(
-            bottom: BorderSide(color: Color.fromARGB(255, 174, 199, 241), width: 2.0),
+          border: Border(
+            bottom: BorderSide(
+              color: Theme.of(context).colorScheme.outline,
+              width: 2.0,
+            ),
           ),
         ),
         child: Padding(
@@ -28,10 +35,19 @@ class CustomInput extends ConsumerWidget {
               ref.read(searchTextProvider.notifier).state = value;
             },
             decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search, size: 24, color: Color.fromARGB(255, 30, 111, 254)),
-              prefixIconConstraints: BoxConstraints(minWidth: 24, maxHeight: 24),
-              hintText: "Поиск тренера",
-              hintStyle: TextStyle(fontSize: 15),
+              prefixIcon: Icon(
+                CustomIcons.search,
+                size: 17,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              prefixIconConstraints: BoxConstraints(
+                minWidth: 24,
+                maxHeight: 24,
+              ),
+              hintText: S.of(context).search_trainer,
+              hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).hintColor,
+              ),
               border: InputBorder.none,
               contentPadding: EdgeInsets.symmetric(vertical: 10),
             ),
