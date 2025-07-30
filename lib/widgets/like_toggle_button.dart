@@ -27,26 +27,23 @@ class LikeToggleButton extends ConsumerWidget {
 
         ref.read(favoriteTrainersArr.notifier).state = newFavorites;
       },
-      child: Container(
-        padding: EdgeInsets.all(8),
-        child: Row(
-          spacing: 10,
-          children: [
-            Icon(
-              isFavorite ? CustomIcons.heart : CustomIcons.heart_outline,
-              size: 18,
+      child: Row(
+        spacing: 10,
+        children: [
+          Icon(
+            isFavorite ? CustomIcons.heart : CustomIcons.heart_outline,
+            size: 18,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          Text(
+            isFavorite
+                ? S.of(context).in_favorites
+                : S.of(context).to_favorites,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
-            Text(
-              isFavorite
-                  ? S.of(context).in_favorites
-                  : S.of(context).to_favorites,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
