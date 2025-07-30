@@ -74,30 +74,24 @@ class TrainerPage extends ConsumerWidget {
           ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 33),
-              child: LikeToggleButton(trainerId: trainerId as int),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 33), //todo доелать
-              child: Row(
-                children: [
-                  Icon(
-                    CustomIcons.share,
-                    size: 17,
+            LikeToggleButton(trainerId: trainerId as int),
+            Row(
+              children: [
+                Icon(
+                  CustomIcons.share,
+                  size: 17,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                SizedBox(width: 5),
+                Text(
+                  S.of(context).share,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  SizedBox(width: 5),
-                  Text(
-                    S.of(context).share,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
