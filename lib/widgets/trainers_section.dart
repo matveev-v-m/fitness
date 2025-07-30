@@ -7,24 +7,34 @@ import 'favorite_trainers_section.dart';
 
 class TrainersSection extends ConsumerWidget {
   final Map<String, GlobalKey> sectionKeys;
+  final ScrollController scrollController;
 
-  const TrainersSection({super.key, required this.sectionKeys});
+  const TrainersSection({
+    super.key,
+    required this.sectionKeys,
+    required this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sectionTitleList = ref.watch(sectionTitleSet);
     return ListView.builder(
-      shrinkWrap: true, //todo
-      physics: const NeverScrollableScrollPhysics(),
+      controller: scrollController,
       itemCount: sectionTitleList.length + 1,
       itemBuilder: (context, index) {
         if (index == 0) {
-          return FavoriteTrainersSection(sectionTitle: "ЛЮБИМЫЕ СПЕЦИАЛИСТЫ");
+          return Padding(
+            padding: const EdgeInsets.only(left: 19, right: 19),
+            child: FavoriteTrainersSection(sectionTitle: "ЛЮБИМЫЕ СПЕЦИАЛИСТЫ"),
+          );
         }
         final trainer = sectionTitleList[index - 1];
-        return TrainersSectionItem(
-          sectionTitle: trainer,
-          key: sectionKeys[trainer],
+        return Padding(
+          padding: const EdgeInsets.only(left: 19, right: 19),
+          child: TrainersSectionItem(
+            sectionTitle: trainer,
+            key: sectionKeys[trainer],
+          ),
         );
       },
     );

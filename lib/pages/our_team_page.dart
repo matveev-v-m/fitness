@@ -48,48 +48,40 @@ class OurTeamPage extends StatelessWidget {
             child: Container(color: const Color.fromARGB(10, 143, 251, 255)),
           ),
         ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(105),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              const CustomInput(),
+              const SizedBox(height: 15),
+              NavigateBar(
+                sectionKeys: {
+                  "БАССЕЙН": poolKey,
+                  "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
+                  "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
+                  "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
+                },
+              ),
+              const SizedBox(height: 15),
+            ],
+          ),
+        ),
       ),
-      body: ListView(
-        controller: _scrollController,
-        children: [
-          Container(
-            color: const Color.fromARGB(120, 255, 255, 255),
-            child: Column(
-              children: [
-                const SizedBox(height: 5),
-                const CustomInput(),
-                const SizedBox(height: 15),
-                NavigateBar(
-                  //todo перенести в appbar
-                  sectionKeys: {
-                    "БАССЕЙН": poolKey,
-                    "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
-                    "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
-                    "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
-                  },
-                ),
-                const SizedBox(height: 21),
-              ],
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 19, right: 19),
-            child: TrainersSection(
-              sectionKeys: {
-                "БАССЕЙН": poolKey,
-                "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
-                "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
-                "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
-              },
-            ),
-          ),
-        ],
+      body: TrainersSection(
+        sectionKeys: {
+          "БАССЕЙН": poolKey,
+          "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
+          "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
+          "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
+        },
+        scrollController: _scrollController,
       ),
     );
   }
 }
 
+// controller: _scrollController,
 class SliverOurTeamPage extends StatelessWidget {
   SliverOurTeamPage({super.key});
 
