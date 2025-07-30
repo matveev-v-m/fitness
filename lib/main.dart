@@ -83,6 +83,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           elevation: 0,
         ),
+        inputDecorationTheme: InputDecorationTheme(),
       ),
       routes: {
         // '/': (context) => SliverOurTeamPage(),

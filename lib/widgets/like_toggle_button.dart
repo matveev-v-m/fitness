@@ -28,13 +28,14 @@ class LikeToggleButton extends ConsumerWidget {
         ref.read(favoriteTrainersArr.notifier).state = newFavorites;
       },
       child: Row(
-        spacing: 10,
+        // spacing: 10,
         children: [
           Icon(
             isFavorite ? CustomIcons.heart : CustomIcons.heart_outline,
             size: 18,
             color: Theme.of(context).colorScheme.primary,
           ),
+          SizedBox(width: 10),
           Text(
             isFavorite
                 ? S.of(context).in_favorites
