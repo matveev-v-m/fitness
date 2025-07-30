@@ -36,15 +36,17 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Иванова Анна Сергеевна',
       typeOfSpecialization: Department.pool.value,
       trainerType: 'Тренер по плаванию',
-      // description: """### Приоритетные направления:\n - плавание для начинающих\n - аквааэробика\n - спортивное плавание""",
-      // imagePath: 'assets/images/trainer_image_id_1.jpg',
+      description:
+          """###  Направления:\n - плавание для начинающих\n - аквааэробика\n - спортивное плавание""",
+      imagePath: 'assets/images/trainer_image_id_1.jpg',
     ),
     Trainer(
       id: 2,
       name: 'Петров Дмитрий Владимирович',
       typeOfSpecialization: Department.pool.value,
       trainerType: 'Тренер по плаванию',
-      description: """### Приоритетные направления:\n - подготовка к триатлону\n - техника плавания кролем""",
+      description:
+          """###  Направления:\n - подготовка к триатлону\n - техника плавания кролем""",
       imagePath: 'assets/images/trainer_image_id_2.jpg',
     ),
     Trainer(
@@ -52,7 +54,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Смирнова Екатерина Олеговна',
       typeOfSpecialization: Department.pool.value,
       trainerType: 'Тренер по плаванию',
-      description: """### Приоритетные направления:\n - оздоровительное плавание\n - плавание для беременных""",
+      description:
+          """###  Направления:\n - оздоровительное плавание\n - плавание для беременных""",
       imagePath: 'assets/images/trainer_image_id_3.jpg',
     ),
     Trainer(
@@ -60,7 +63,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Максименко Павел Иванович',
       typeOfSpecialization: Department.gym.value,
       trainerType: 'Фитнес тренер',
-      description: """### Приоритетные направления:\n - силовой прогресс - снижение веса\n - коррекция фигуры""",
+      description:
+          """###  Направления:\n - силовой прогресс - снижение веса\n - коррекция фигуры""",
       imagePath: 'assets/images/trainer_image_id_4.jpg',
     ),
     Trainer(
@@ -68,7 +72,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Козлова Марина Александровна',
       typeOfSpecialization: Department.gym.value,
       trainerType: 'Фитнес тренер',
-      description: """### Приоритетные направления:\n - функциональный тренинг\n - кроссфит\n - пилатес""",
+      description:
+          """###  Направления:\n - функциональный тренинг\n - кроссфит\n - пилатес""",
       imagePath: 'assets/images/trainer_image_id_5.jpg',
     ),
     Trainer(
@@ -76,7 +81,7 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Сидоров Артём Игоревич',
       typeOfSpecialization: Department.gym.value,
       trainerType: 'Фитнес тренер',
-      description: """### Приоритетные направления:\n - бодибилдинг\n - пауэрлифтинг""",
+      description: """###  Направления:\n - бодибилдинг\n - пауэрлифтинг""",
       imagePath: 'assets/images/trainer_image_id_6.jpg',
     ),
     Trainer(
@@ -84,7 +89,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Васильева Ольга Николаевна',
       typeOfSpecialization: Department.childrenTraining.value,
       trainerType: 'Детский тренер',
-      description: """### Приоритетные направления:\n - детская гимнастика\n - подвижные игры""",
+      description:
+          """###  Направления:\n - детская гимнастика\n - подвижные игры""",
       imagePath: 'assets/images/trainer_image_id_7.jpg',
     ),
     Trainer(
@@ -92,7 +98,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Николаев Сергей Петрович',
       typeOfSpecialization: Department.childrenTraining.value,
       trainerType: 'Детский тренер',
-      description: """### Приоритетные направления:\n - детский фитнес\n - подготовка к спортивным секциям""",
+      description:
+          """###  Направления:\n - детский фитнес\n - подготовка к спортивным секциям""",
       imagePath: 'assets/images/trainer_image_id_8.jpg',
     ),
     Trainer(
@@ -100,7 +107,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Фёдорова Ирина Викторовна',
       typeOfSpecialization: Department.childrenTraining.value,
       trainerType: 'Детский тренер',
-      description: """### Приоритетные направления:\n - развивающая гимнастика\n - детская йога""",
+      description:
+          """###  Направления:\n - развивающая гимнастика\n - детская йога""",
       imagePath: 'assets/images/trainer_image_id_9.jpg',
     ),
     Trainer(
@@ -108,7 +116,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Алексеев Андрей Михайлович',
       typeOfSpecialization: Department.groupPrograms.value,
       trainerType: 'Тренер групповых занятий',
-      description: """### Приоритетные направления:\n - круговые тренировки\n - TRX\n - интервальные тренировки""",
+      description:
+          """###  Направления:\n - круговые тренировки\n - TRX\n - интервальные тренировки""",
       imagePath: 'assets/images/trainer_image_id_10.jpg',
     ),
     Trainer(
@@ -116,7 +125,8 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Григорьева Татьяна Сергеевна',
       typeOfSpecialization: Department.groupPrograms.value,
       trainerType: 'Тренер групповых занятий',
-      description: """### Приоритетные направления:\n - танцевальный фитнес\n - зумба\n - степ-аэробика""",
+      description:
+          """###  Направления:\n - танцевальный фитнес\n - зумба\n - степ-аэробика""",
       imagePath: 'assets/images/trainer_image_id_11.jpg',
     ),
     Trainer(
@@ -124,7 +134,7 @@ final originalTrainersArr = Provider<List<Trainer>>((ref) {
       name: 'Дмитриев Иван Алексеевич',
       typeOfSpecialization: Department.groupPrograms.value,
       trainerType: 'Тренер групповых занятий',
-      description: """### Приоритетные направления:\n - функциональный тренинг\n - HIIT""",
+      description: """###  Направления:\n - функциональный тренинг\n - HIIT""",
       imagePath: 'assets/images/trainer_image_id_12.jpg',
     ),
   ];
@@ -146,3 +156,11 @@ final trainersArr = Provider<List<Trainer>>((ref) {
 });
 
 final favoriteTrainersArr = StateProvider<Set<int>>((ref) => <int>{});
+
+final sectionTitleSet = Provider<List<String>>((ref) {
+  final trainers = ref.watch(trainersArr);
+
+  return Set<String>.from(
+    trainers.map((trainer) => trainer.typeOfSpecialization),
+  ).toList();
+});

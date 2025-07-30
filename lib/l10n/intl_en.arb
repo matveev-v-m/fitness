@@ -1,0 +1,14 @@
+{
+  "@@locale": "en",
+  "hello": "Hello",
+  "@hello": {
+    "description": "A greeting message"
+  },
+  "pool": "POOL",
+  "our_team": "OUR TEAM",
+  "search_trainer": "Search trainer",
+  "favorite_trainer_text": "Select a specialist as your favorite on their page, and they will appear here",
+  "share": "Share",
+  "to_favorites": "To favorites",
+  "in_favorites": "In favorites"
+}

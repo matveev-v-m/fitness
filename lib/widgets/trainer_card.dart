@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_fitness_project/generated/icons/custom_icons.dart';
 import 'package:my_fitness_project/state.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class TrainerCard extends ConsumerWidget {
   final String trainerName;
   final int trainerId;
   final String imagePath;
   final String trainerType;
+
   const TrainerCard({
     super.key,
     required this.trainerName,
@@ -19,18 +20,24 @@ class TrainerCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isFavorite = ref.watch(favoriteTrainersArr).contains(trainerId);
-    return Row(
+    return Column(
       children: [
         SizedBox(
-          width: 150,
+          // width: 150,
           child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/trainer_page', arguments: trainerId);
+              Navigator.pushNamed(
+                context,
+                '/trainer_page',
+                arguments: trainerId,
+              );
             },
             child: Card(
               margin: EdgeInsets.zero,
               elevation: 0,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
               color: Colors.transparent,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,13 +48,31 @@ class TrainerCard extends ConsumerWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         clipBehavior: Clip.antiAlias,
-                        child: Image.asset(imagePath, height: 142, width: 150, fit: BoxFit.cover),
+                        child: Image.asset(
+                          imagePath,
+                          // height: 142,
+                          // width: 150,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       if (isFavorite)
                         Positioned(
                           right: -7,
                           bottom: -3,
-                          child: SvgPicture.asset("assets/images/like_icon.svg"),
+                          child: Container(
+                            height: 26,
+                            width: 26,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.primary,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(13),
+                              ),
+                            ),
+                            child: Icon(
+                              CustomIcons.heart_favorite,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                          ),
                         ),
                     ],
                   ),
@@ -56,7 +81,7 @@ class TrainerCard extends ConsumerWidget {
                     trainerName,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   SizedBox(height: 4),
                   Text(
@@ -64,19 +89,15 @@ class TrainerCard extends ConsumerWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     softWrap: true,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromARGB(255, 93, 93, 93),
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  SizedBox(height: 5),
+                  // SizedBox(height: 5),
                 ],
               ),
             ),
           ),
         ),
-        SizedBox(width: 25),
+        // SizedBox(width: 25),
       ],
     );
   }

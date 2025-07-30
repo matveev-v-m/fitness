@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_fitness_project/generated/icons/custom_icons.dart';
 import 'package:my_fitness_project/state.dart';
+
+import '../generated/l10n.dart';
 
 class LikeToggleButton extends ConsumerWidget {
   final int trainerId;
 
   const LikeToggleButton({super.key, required this.trainerId});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isFavorite = ref.watch(favoriteTrainersArr).contains(trainerId);
@@ -29,15 +33,16 @@ class LikeToggleButton extends ConsumerWidget {
           spacing: 10,
           children: [
             Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Color.fromARGB(255, 30, 111, 254),
+              isFavorite ? CustomIcons.heart : CustomIcons.heart_outline,
+              size: 18,
+              color: Theme.of(context).colorScheme.primary,
             ),
             Text(
-              isFavorite ? "В любимых" : "В любимые",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w300,
-                color: Color.fromARGB(255, 30, 111, 254),
+              isFavorite
+                  ? S.of(context).in_favorites
+                  : S.of(context).to_favorites,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
           ],

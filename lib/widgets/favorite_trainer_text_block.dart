@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_fitness_project/generated/icons/custom_icons.dart';
+
+import '../generated/l10n.dart';
 
 class FavoriteTrainerTextBlock extends StatelessWidget {
   const FavoriteTrainerTextBlock({super.key});
@@ -9,12 +11,17 @@ class FavoriteTrainerTextBlock extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SvgPicture.asset("assets/images/heart_outlined.svg", fit: BoxFit.cover),
+        Icon(
+          CustomIcons.heart_outline,
+          color: Theme.of(context).iconTheme.color,
+        ),
         const SizedBox(width: 11),
         Expanded(
           child: Text(
-            "Выберите специалиста любимым на его странице, и он появится здесь",
-            style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 134, 134, 134)),
+            S.of(context).favorite_trainer_text,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
             softWrap: true,
           ),
         ),
