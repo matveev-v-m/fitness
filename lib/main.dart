@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       ],
       // supportedLocales: S.delegate.supportedLocales,
       supportedLocales: [const Locale('ru', 'RU'), const Locale('en', 'US')],
-      // locale: const Locale('ru', 'RU'),
-      locale: const Locale('en', 'US'),
+      locale: const Locale('ru', 'RU'),
+      // locale: const Locale('en', 'US'),
       theme: ThemeData(
         hintColor: Color.fromARGB(200, 26, 26, 26),
         colorScheme: ColorScheme.light(
@@ -44,37 +44,77 @@ class MyApp extends StatelessWidget {
         fontFamily: "Granate",
         textTheme: TextTheme(
           headlineLarge: TextStyle(
-            fontVariations: [FontVariation('wght', 550)], // todo
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight550,
+              ),
+            ],
             fontSize: 24,
           ),
           headlineMedium: TextStyle(
-            fontVariations: [FontVariation('wght', 550)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight550,
+              ),
+            ],
             fontSize: 17,
           ),
           headlineSmall: TextStyle(
-            fontVariations: [FontVariation('wght', 400)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight400,
+              ),
+            ],
             fontSize: 17,
           ),
           titleLarge: TextStyle(
-            fontVariations: [FontVariation('wght', 550)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight550,
+              ),
+            ],
             fontSize: 24,
           ),
           titleMedium: TextStyle(
-            fontVariations: [FontVariation('wght', 400)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight400,
+              ),
+            ],
             fontSize: 13,
           ),
           titleSmall: TextStyle(
-            fontVariations: [FontVariation('wght', 400)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight400,
+              ),
+            ],
             fontSize: 15,
             color: Color.fromARGB(204, 32, 32, 32),
           ),
           bodyLarge: TextStyle(
-            fontVariations: [FontVariation('wght', 400)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight400,
+              ),
+            ],
             fontSize: 13,
             color: Theme.of(context).colorScheme.tertiary,
           ),
           bodyMedium: TextStyle(
-            fontVariations: [FontVariation('wght', 300)],
+            fontVariations: [
+              FontVariation(
+                CustomFontWeight.weight,
+                CustomFontWeight.weight300,
+              ),
+            ],
             fontSize: 15,
           ),
         ),
@@ -83,14 +123,37 @@ class MyApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           elevation: 0,
         ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(12),
+              topRight: Radius.circular(12),
+            ),
+            borderSide: BorderSide.none,
+          ),
+          fillColor: Color.fromARGB(255, 219, 224, 234),
+          filled: true,
+          prefixIconConstraints: BoxConstraints(minWidth: 24, maxHeight: 24),
+          hintStyle: Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(color: Theme.of(context).hintColor),
+          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        ),
       ),
       routes: {
-        // '/': (context) => SliverOurTeamPage(),
-        '/': (context) => OurTeamPage(),
+        '/': (context) => SliverOurTeamPage(),
+        // '/': (context) => OurTeamPage(),
         '/trainer_page': (context) => TrainerPage(),
       },
     );
   }
+}
+
+class CustomFontWeight {
+  static final weight = 'wght';
+  static final weight550 = 550.0;
+  static final weight400 = 400.0;
+  static final weight300 = 300.0;
 }
 
 // акцентный текст Color.fromARGB(255, 30, 111, 254),--------------------------+

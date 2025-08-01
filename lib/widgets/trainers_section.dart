@@ -51,15 +51,12 @@ class SliverTrainersSection extends ConsumerWidget {
     final sectionTitleList = ref.watch(sectionTitleSet);
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        if (index == 0) {
-          return FavoriteTrainersSection(sectionTitle: "ЛЮБИМЫЕ СПЕЦИАЛИСТЫ");
-        }
-        final trainer = sectionTitleList[index - 1];
+        final trainer = sectionTitleList[index];
         return TrainersSectionItem(
           sectionTitle: trainer,
           key: sectionKeys[trainer],
         );
-      }, childCount: sectionTitleList.length + 1),
+      }, childCount: sectionTitleList.length),
     );
   }
 }

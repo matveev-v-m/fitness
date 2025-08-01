@@ -43,6 +43,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   golden_toolkit: ^0.15.0
+  protobuf: ^4.1.1
 
 dev_dependencies:
   flutter_test:

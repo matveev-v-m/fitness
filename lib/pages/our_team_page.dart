@@ -6,6 +6,7 @@ import 'package:my_fitness_project/widgets/trainers_section.dart';
 
 import '../generated/l10n.dart';
 import '../widgets/custom_input.dart';
+import '../widgets/favorite_trainers_section.dart';
 import '../widgets/navigate_bar.dart';
 
 class OurTeamPage extends StatelessWidget {
@@ -121,32 +122,6 @@ class SliverOurTeamPage extends StatelessWidget {
               S.of(context).our_team,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
-
-            // flexibleSpace: FlexibleSpaceBar(
-            //   collapseMode: CollapseMode.pin,
-            //   background: Padding(
-            //     padding: const EdgeInsets.only(left: 10),
-            //     child: Align(
-            //       alignment: Alignment.bottomLeft,
-            //       child: Column(
-            //         mainAxisAlignment: MainAxisAlignment.end,
-            //         children: [
-            //           const CustomInput(),
-            //           const SizedBox(height: 15),
-            //           NavigateBar(
-            //             sectionKeys: {
-            //               "БАССЕЙН": poolKey,
-            //               "ТРЕНАЖЁРНЫЙ ЗАЛ": gymKey,
-            //               "ДЕТСКИЕ ТРЕНИРОВКИ": kidsKey,
-            //               "ГРУППОВЫЕ ПРОГРАММЫ": groupKey,
-            //             },
-            //           ),
-            //           const SizedBox(height: 15),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(105),
               child: Column(
@@ -165,6 +140,12 @@ class SliverOurTeamPage extends StatelessWidget {
                   const SizedBox(height: 15),
                 ],
               ),
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.only(left: 19, right: 19),
+            sliver: FavoriteTrainersSection(
+              sectionTitle: "ЛЮБИМЫЕ СПЕЦИАЛИСТЫ",
             ),
           ),
           SliverPadding(

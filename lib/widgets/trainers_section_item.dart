@@ -12,7 +12,7 @@ class TrainersSectionItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final sectionTrainersList = ref
         .watch(trainersArr)
-        .where((item) => item.typeOfSpecialization == sectionTitle)
+        .where((item) => item.typeOfSpecialization.title == sectionTitle)
         .toList();
 
     return Column(
