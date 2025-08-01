@@ -33,66 +33,77 @@ enum Departments {
 
 final originalTrainersArr = Provider<List<TrainerProto>>((ref) {
   return [
-    TrainerProto(
-      id: 1,
-      name: 'Иванова Анна Сергеевна',
-      typeOfSpecialization: Department(id: '1', title: Departments.pool.value),
-      trainerType: 'Тренер по плаванию',
-      description:
-          """###  Направления:\n - плавание для начинающих\n - аквааэробика\n - спортивное плавание""",
-      imagePath: 'assets/images/trainer_image_id_1.jpg',
-    ),
-    TrainerProto(
-      id: 2,
-      name: 'Петров Дмитрий Владимирович',
-      typeOfSpecialization: Department(id: '1', title: Departments.pool.value),
-      trainerType: 'Тренер по плаванию',
-      description:
-          """###  Направления:\n - подготовка к триатлону\n - техника плавания кролем""",
-      imagePath: 'assets/images/trainer_image_id_2.jpg',
-    ),
-    TrainerProto(
-      id: 3,
-      name: 'Смирнова Екатерина Олеговна',
-      typeOfSpecialization: Department(id: '1', title: Departments.pool.value),
-      trainerType: 'Тренер по плаванию',
-      description:
-          """###  Направления:\n - оздоровительное плавание\n - плавание для беременных""",
-      imagePath: 'assets/images/trainer_image_id_3.jpg',
-    ),
-    TrainerProto(
-      id: 4,
-      name: 'Максименко Павел Иванович',
-      typeOfSpecialization: Department(id: '2', title: Departments.gym.value),
-      trainerType: 'Фитнес тренер',
-      description:
-          """###  Направления:\n - силовой прогресс - снижение веса\n - коррекция фигуры""",
-      imagePath: 'assets/images/trainer_image_id_4.jpg',
-    ),
-    TrainerProto(
-      id: 5,
-      name: 'Козлова Марина Александровна',
-      typeOfSpecialization: Department(id: '2', title: Departments.gym.value),
-      trainerType: 'Фитнес тренер',
-      description:
-          """###  Направления:\n - функциональный тренинг\n - кроссфит\n - пилатес""",
-      imagePath: 'assets/images/trainer_image_id_5.jpg',
-    ),
-    TrainerProto(
-      id: 6,
-      name: 'Сидоров Артём Игоревич',
-      typeOfSpecialization: Department(id: '2', title: Departments.gym.value),
-      trainerType: 'Фитнес тренер',
-      description: """###  Направления:\n - бодибилдинг\n - пауэрлифтинг""",
-      imagePath: 'assets/images/trainer_image_id_6.jpg',
-    ),
+    TrainerProto()
+      ..id = 1
+      ..name = 'Иванова Анна Сергеевна'
+      ..typeOfSpecialization = (Department()
+        ..id = '1'
+        ..title = Departments.pool.value)
+      ..trainerType = 'Тренер по плаванию'
+      ..description =
+          """###  Направления:\n - плавание для начинающих\n - аквааэробика\n - спортивное плавание"""
+      ..imagePath = 'assets/images/trainer_image_id_1.jpg',
+
+    TrainerProto()
+      ..id = 2
+      ..name = 'Петров Дмитрий Владимирович'
+      ..typeOfSpecialization = (Department()
+        ..id = '1'
+        ..title = Departments.pool.value)
+      ..trainerType = 'Тренер по плаванию'
+      ..description =
+          """###  Направления:\n - подготовка к триатлону\n - техника плавания кролем"""
+      ..imagePath = 'assets/images/trainer_image_id_2.jpg',
+
+    TrainerProto()
+      ..id = 3
+      ..name = 'Смирнова Екатерина Олеговна'
+      ..typeOfSpecialization = (Department()
+        ..id = '1'
+        ..title = Departments.pool.value)
+      ..trainerType = 'Тренер по плаванию'
+      ..description =
+          """###  Направления:\n - оздоровительное плавание\n - плавание для беременных"""
+      ..imagePath = 'assets/images/trainer_image_id_3.jpg',
+
+    TrainerProto()
+      ..id = 4
+      ..name = 'Максименко Павел Иванович'
+      ..typeOfSpecialization = (Department()
+        ..id = '2'
+        ..title = Departments.gym.value)
+      ..trainerType = 'Фитнес тренер'
+      ..description =
+          """###  Направления:\n - силовой прогресс - снижение веса\n - коррекция фигуры"""
+      ..imagePath = 'assets/images/trainer_image_id_4.jpg',
+
+    TrainerProto()
+      ..id = 5
+      ..name = 'Козлова Марина Александровна'
+      ..typeOfSpecialization = (Department()
+        ..id = '2'
+        ..title = Departments.gym.value)
+      ..trainerType = 'Фитнес тренер'
+      ..description =
+          """###  Направления:\n - функциональный тренинг\n - кроссфит\n - пилатес"""
+      ..imagePath = 'assets/images/trainer_image_id_5.jpg',
+
+    TrainerProto()
+      ..id = 6
+      ..name = 'Сидоров Артём Игоревич'
+      ..typeOfSpecialization = (Department()
+        ..id = '2'
+        ..title = Departments.gym.value)
+      ..trainerType = 'Фитнес тренер'
+      ..description = """###  Направления:\n - бодибилдинг\n - пауэрлифтинг"""
+      ..imagePath = 'assets/images/trainer_image_id_6.jpg',
+
     TrainerProto()
       ..id = 7
       ..name = 'Васильева Ольга Николаевна'
-      ..typeOfSpecialization = Department(
-        id: '2',
-        title: Departments.childrenTraining.value,
-      )
+      ..typeOfSpecialization = (Department()
+        ..id = '3'
+        ..title = Departments.childrenTraining.value)
       ..trainerType = 'Детский тренер'
       ..description =
           """###  Направления:\n - детская гимнастика\n - подвижные игры"""
