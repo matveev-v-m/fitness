@@ -108,6 +108,61 @@ final originalTrainersArr = Provider<List<TrainerProto>>((ref) {
       ..description =
           """###  Направления:\n - детская гимнастика\n - подвижные игры"""
       ..imagePath = 'assets/images/trainer_image_id_7.jpg',
+
+    TrainerProto()
+      ..id = 8
+      ..name = 'Николаев Сергей Петрович'
+      ..typeOfSpecialization = (Department()
+        ..id = '3'
+        ..title = Departments.childrenTraining.value)
+      ..trainerType = 'Детский тренер'
+      ..description =
+          """###  Направления:\n - детский фитнес\n - подготовка к спортивным секциям"""
+      ..imagePath = 'assets/images/trainer_image_id_8.jpg',
+
+    TrainerProto()
+      ..id = 9
+      ..name = 'Фёдорова Ирина Викторовна'
+      ..typeOfSpecialization = (Department()
+        ..id = '3'
+        ..title = Departments.childrenTraining.value)
+      ..trainerType = 'Детский тренер'
+      ..description =
+          """###  Направления:\n - развивающая гимнастика\n - детская йога"""
+      ..imagePath = 'assets/images/trainer_image_id_9.jpg',
+
+    TrainerProto()
+      ..id = 10
+      ..name = 'Алексеев Андрей Михайлович'
+      ..typeOfSpecialization = (Department()
+        ..id = '4'
+        ..title = Departments.groupPrograms.value)
+      ..trainerType = 'Тренер групповых занятий'
+      ..description =
+          """###  Направления:\n - круговые тренировки\n - TRX\n - интервальные тренировки"""
+      ..imagePath = 'assets/images/trainer_image_id_10.jpg',
+
+    TrainerProto()
+      ..id = 11
+      ..name = 'Григорьева Татьяна Сергеевна'
+      ..typeOfSpecialization = (Department()
+        ..id = '4'
+        ..title = Departments.groupPrograms.value)
+      ..trainerType = 'Тренер групповых занятий'
+      ..description =
+          """###  Направления:\n - танцевальный фитнес\n - зумба\n - степ-аэробика"""
+      ..imagePath = 'assets/images/trainer_image_id_11.jpg',
+
+    TrainerProto()
+      ..id = 12
+      ..name = 'Дмитриев Иван Алексеевич'
+      ..typeOfSpecialization = (Department()
+        ..id = '4'
+        ..title = Departments.groupPrograms.value)
+      ..trainerType = 'Тренер групповых занятий'
+      ..description =
+          """###  Направления:\n - функциональный тренинг\n - HIIT"""
+      ..imagePath = 'assets/images/trainer_image_id_12.jpg',
   ];
 });
 
