@@ -11,45 +11,32 @@ class CustomInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 22),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
-        height: 45,
         decoration: BoxDecoration(
-          //todo переделать
-          color: const Color.fromARGB(255, 219, 224, 234),
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
-          ),
           border: Border(
             bottom: BorderSide(
               color: Theme.of(context).colorScheme.outline,
-              width: 2.0,
+              width: 2,
             ),
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: TextField(
-            onChanged: (value) {
-              ref.read(searchTextProvider.notifier).state = value;
-            },
-            decoration: InputDecoration(
-              prefixIcon: Icon(
+        child: TextField(
+          onChanged: (value) {
+            ref.read(searchTextProvider.notifier).state = value;
+          },
+          decoration: InputDecoration(
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Icon(
                 CustomIcons.search,
                 size: 17,
                 color: Theme.of(context).colorScheme.primary,
               ),
-              prefixIconConstraints: BoxConstraints(
-                minWidth: 24,
-                maxHeight: 24,
-              ),
-              hintText: S.of(context).search_trainer,
-              hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).hintColor,
-              ),
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
+            ),
+            hintText: S.of(context).search_trainer,
+            hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).hintColor,
             ),
           ),
         ),

@@ -13,8 +13,9 @@ class NavigateBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final trainers = ref.watch(originalTrainersArr);
     final sectionTitleList = Set.from(
-      trainers.map((trainer) => trainer.typeOfSpecialization),
+      trainers.map((trainer) => trainer.typeOfSpecialization.title),
     );
+
     return SizedBox(
       height: 28,
       child: ListView(

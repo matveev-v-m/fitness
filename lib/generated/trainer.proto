@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message Department {
+  string id = 1;
+  string title = 2;
+}
+
+message TrainerProto {
+  int32 id = 1;
+  string name = 2;
+  Department typeOfSpecialization = 3;
+  string trainerType = 4;
+  optional string description = 5;
+  optional string imagePath = 6;
+}
