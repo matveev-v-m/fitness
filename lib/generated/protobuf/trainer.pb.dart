@@ -16,6 +16,49 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
+class Empty extends $pb.GeneratedMessage {
+  factory Empty() => create();
+
+  Empty._();
+
+  factory Empty.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+
+  factory Empty.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'Empty',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'trainers'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  Empty clone() => Empty()..mergeFromMessage(this);
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  Empty copyWith(void Function(Empty) updates) =>
+      super.copyWith((message) => updates(message as Empty)) as Empty;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Empty create() => Empty._();
+
+  @$core.override
+  Empty createEmptyInstance() => create();
+
+  static $pb.PbList<Empty> createRepeated() => $pb.PbList<Empty>();
+
+  @$core.pragma('dart2js:noInline')
+  static Empty getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Empty>(create);
+  static Empty? _defaultInstance;
+}
+
 class Department extends $pb.GeneratedMessage {
   factory Department({
     $core.String? id,
@@ -39,6 +82,7 @@ class Department extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'Department',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'trainers'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'title')
@@ -124,6 +168,7 @@ class TrainerProto extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'TrainerProto',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'trainers'),
       createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, _omitFieldNames ? '' : 'name')
@@ -233,6 +278,62 @@ class TrainerProto extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(6)
   void clearImagePath() => $_clearField(6);
+}
+
+class DataResponse extends $pb.GeneratedMessage {
+  factory DataResponse({
+    $core.Iterable<TrainerProto>? items,
+  }) {
+    final result = create();
+    if (items != null) result.items.addAll(items);
+    return result;
+  }
+
+  DataResponse._();
+
+  factory DataResponse.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+
+  factory DataResponse.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DataResponse',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'trainers'),
+      createEmptyInstance: create)
+    ..pc<TrainerProto>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM,
+        subBuilder: TrainerProto.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DataResponse clone() => DataResponse()..mergeFromMessage(this);
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  DataResponse copyWith(void Function(DataResponse) updates) =>
+      super.copyWith((message) => updates(message as DataResponse))
+          as DataResponse;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DataResponse create() => DataResponse._();
+
+  @$core.override
+  DataResponse createEmptyInstance() => create();
+
+  static $pb.PbList<DataResponse> createRepeated() =>
+      $pb.PbList<DataResponse>();
+
+  @$core.pragma('dart2js:noInline')
+  static DataResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DataResponse>(create);
+  static DataResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $pb.PbList<TrainerProto> get items => $_getList(0);
 }
 
 const $core.bool _omitFieldNames =

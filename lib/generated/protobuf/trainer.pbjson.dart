@@ -14,6 +14,15 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use emptyDescriptor instead')
+const Empty$json = {
+  '1': 'Empty',
+};
+
+/// Descriptor for `Empty`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List emptyDescriptor =
+    $convert.base64Decode('CgVFbXB0eQ==');
+
 @$core.Deprecated('Use departmentDescriptor instead')
 const Department$json = {
   '1': 'Department',
@@ -38,7 +47,7 @@ const TrainerProto$json = {
       '3': 3,
       '4': 1,
       '5': 11,
-      '6': '.Department',
+      '6': '.trainers.Department',
       '10': 'typeOfSpecialization'
     },
     {'1': 'trainerType', '3': 4, '4': 1, '5': 9, '10': 'trainerType'},
@@ -69,8 +78,28 @@ const TrainerProto$json = {
 
 /// Descriptor for `TrainerProto`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List trainerProtoDescriptor = $convert.base64Decode(
-    'CgxUcmFpbmVyUHJvdG8SDgoCaWQYASABKAVSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSPwoUdH'
-    'lwZU9mU3BlY2lhbGl6YXRpb24YAyABKAsyCy5EZXBhcnRtZW50UhR0eXBlT2ZTcGVjaWFsaXph'
-    'dGlvbhIgCgt0cmFpbmVyVHlwZRgEIAEoCVILdHJhaW5lclR5cGUSJQoLZGVzY3JpcHRpb24YBS'
-    'ABKAlIAFILZGVzY3JpcHRpb26IAQESIQoJaW1hZ2VQYXRoGAYgASgJSAFSCWltYWdlUGF0aIgB'
-    'AUIOCgxfZGVzY3JpcHRpb25CDAoKX2ltYWdlUGF0aA==');
+    'CgxUcmFpbmVyUHJvdG8SDgoCaWQYASABKAVSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSSAoUdH'
+    'lwZU9mU3BlY2lhbGl6YXRpb24YAyABKAsyFC50cmFpbmVycy5EZXBhcnRtZW50UhR0eXBlT2ZT'
+    'cGVjaWFsaXphdGlvbhIgCgt0cmFpbmVyVHlwZRgEIAEoCVILdHJhaW5lclR5cGUSJQoLZGVzY3'
+    'JpcHRpb24YBSABKAlIAFILZGVzY3JpcHRpb26IAQESIQoJaW1hZ2VQYXRoGAYgASgJSAFSCWlt'
+    'YWdlUGF0aIgBAUIOCgxfZGVzY3JpcHRpb25CDAoKX2ltYWdlUGF0aA==');
+
+@$core.Deprecated('Use dataResponseDescriptor instead')
+const DataResponse$json = {
+  '1': 'DataResponse',
+  '2': [
+    {
+      '1': 'items',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.trainers.TrainerProto',
+      '10': 'items'
+    },
+  ],
+};
+
+/// Descriptor for `DataResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List dataResponseDescriptor = $convert.base64Decode(
+    'CgxEYXRhUmVzcG9uc2USLAoFaXRlbXMYASADKAsyFi50cmFpbmVycy5UcmFpbmVyUHJvdG9SBW'
+    'l0ZW1z');

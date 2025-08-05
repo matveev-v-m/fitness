@@ -1,5 +1,13 @@
 syntax = "proto3";
 
+package trainers;
+
+service TrainerService {
+  rpc GetTrainers (Empty) returns (DataResponse);
+}
+
+message Empty {}
+
 message Department {
   string id = 1;
   string title = 2;
@@ -12,4 +20,8 @@ message TrainerProto {
   string trainerType = 4;
   optional string description = 5;
   optional string imagePath = 6;
+}
+
+message DataResponse {
+  repeated TrainerProto items = 1;
 }
