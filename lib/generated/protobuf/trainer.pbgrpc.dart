@@ -39,10 +39,23 @@ class TrainerServiceClient extends $grpc.Client {
     return $createUnaryCall(_$getTrainers, request, options: options);
   }
 
+  $grpc.ResponseStream<$0.DataResponse> streamTrainers(
+    $0.Empty request, {
+    $grpc.CallOptions? options,
+  }) {
+    return $createStreamingCall(
+        _$streamTrainers, $async.Stream.fromIterable([request]),
+        options: options);
+  }
+
   // method descriptors
 
   static final _$getTrainers = $grpc.ClientMethod<$0.Empty, $0.DataResponse>(
       '/trainers.TrainerService/GetTrainers',
+      ($0.Empty value) => value.writeToBuffer(),
+      $0.DataResponse.fromBuffer);
+  static final _$streamTrainers = $grpc.ClientMethod<$0.Empty, $0.DataResponse>(
+      '/trainers.TrainerService/StreamTrainers',
       ($0.Empty value) => value.writeToBuffer(),
       $0.DataResponse.fromBuffer);
 }
@@ -59,6 +72,13 @@ abstract class TrainerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($0.DataResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $0.DataResponse>(
+        'StreamTrainers',
+        streamTrainers_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($0.DataResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.DataResponse> getTrainers_Pre(
@@ -67,5 +87,13 @@ abstract class TrainerServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.DataResponse> getTrainers(
+      $grpc.ServiceCall call, $0.Empty request);
+
+  $async.Stream<$0.DataResponse> streamTrainers_Pre(
+      $grpc.ServiceCall $call, $async.Future<$0.Empty> $request) async* {
+    yield* streamTrainers($call, await $request);
+  }
+
+  $async.Stream<$0.DataResponse> streamTrainers(
       $grpc.ServiceCall call, $0.Empty request);
 }

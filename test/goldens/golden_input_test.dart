@@ -15,8 +15,8 @@ void main() {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [const Locale('ru', 'RU'), const Locale('en', 'US')],
-        locale: const Locale('ru', 'RU'),
+        supportedLocales: [Locale('ru', 'RU'), Locale('en', 'US')],
+        locale: Locale('ru', 'RU'),
         home: Scaffold(body: CustomInput()),
       ),
     );
