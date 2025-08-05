@@ -4,6 +4,7 @@ package trainers;
 
 service TrainerService {
   rpc GetTrainers (Empty) returns (DataResponse);
+  rpc StreamTrainers (Empty) returns (stream DataResponse);
 }
 
 message Empty {}
@@ -25,3 +26,31 @@ message TrainerProto {
 message DataResponse {
   repeated TrainerProto items = 1;
 }
+
+//syntax = "proto3";
+//
+//package trainers.v1;
+//
+//service TrainerService{
+//  rpc GetTrainers (GetTrainersRequest) returns (GetTrainersResponse);
+//}
+//
+//message GetTrainersRequest {}
+//
+//message Department {
+//  string id = 1;
+//  string title = 2;
+//}
+//
+//message TrainerProto {
+//  int32 id = 1;
+//  string name = 2;
+//  Department typeOfSpecialization = 3;
+//  string trainerType = 4;
+//  optional string description = 5;
+//  optional string imagePath = 6;
+//}
+//
+//message GetTrainersResponse {
+//  repeated TrainerProto items = 1;
+//}

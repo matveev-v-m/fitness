@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:grpc/grpc.dart';
+import 'package:http/http.dart' as http;
 
 import 'generated/protobuf/trainer.pbgrpc.dart';
 
@@ -32,36 +32,74 @@ enum Departments {
   const Departments(this.value);
 }
 
-final originalTrainersArr = FutureProvider<List<TrainerProto>>((ref) async {
-  final channel = ClientChannel(
-    'localhost',
-    port: 8080,
-    options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
-  );
-
-  try {
-    final client = TrainerServiceClient(channel);
-    final response = await client.getTrainers(Empty());
-    return response.items;
-  } catch (e) {
-    throw Exception('Ошибка получения данных тренеров: $e');
-  } finally {
-    await channel.shutdown();
-  }
-});
-
-//
 // final originalTrainersArr = FutureProvider<List<TrainerProto>>((ref) async {
+//   final channel = GrpcOrGrpcWebClientChannel.grpc(
+//     'localhost',
+//     port: 8085,
+//     options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+//   );
+//
+//   final client = TrainerServiceClient(channel);
+//   final res = StreamController<List<TrainerProto>>();
+//
 //   try {
-//     final protobufResponse = await http.get(
-//       Uri.parse('http://localhost:8080/data'),
-//     );
-//     final dataResponse = DataResponse.fromBuffer(protobufResponse.bodyBytes);
-//     return dataResponse.items;
+//     final data = await client.getTrainers(Empty());
+//     return data.items;
 //   } catch (e) {
 //     throw Exception('Сервер упал 😁');
 //   }
 // });
+
+// final originalTrainersArr = StreamProvider.autoDispose<List<TrainerProto>>((
+//   ref,
+// ) {
+//   final channel = GrpcOrGrpcWebClientChannel.grpc(
+//     'localhost',
+//     port: 8085,
+//     options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+//   );
+//
+//   final client = TrainerServiceClient(channel);
+//   final res = StreamController<List<TrainerProto>>();
+//
+//   () async {
+//     while (!res.isClosed) {
+//       try {
+//         await for (var response in client.streamTrainers(Empty())) {
+//           if (!res.isClosed) {
+//             res.add(response.items);
+//           }
+//         }
+//       } catch (e, s) {
+//         if (!res.isClosed) {
+//           res.addError(e, s);
+//         }
+//       }
+//       if (!res.isClosed) {
+//         await Future.delayed(Duration(seconds: 1));
+//       }
+//     }
+//   }();
+//
+//   ref.onDispose(() {
+//     res.close();
+//     channel.terminate();
+//   });
+//   return res.stream;
+// });
+
+//
+final originalTrainersArr = FutureProvider<List<TrainerProto>>((ref) async {
+  try {
+    final protobufResponse = await http.get(
+      Uri.parse('http://localhost:8085/data'),
+    );
+    final dataResponse = DataResponse.fromBuffer(protobufResponse.bodyBytes);
+    return dataResponse.items;
+  } catch (e) {
+    throw Exception('Сервер упал 😁');
+  }
+});
 
 // final originalTrainersArr = Provider<List<TrainerProto>>((ref) {
 //   return [
