@@ -10,69 +10,55 @@ class TrainersSectionItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sectionTrainersList = ref
-        .watch(trainersArr)
-        .where((item) => item.typeOfSpecialization.title == sectionTitle)
-        .toList();
+    final trainersAsync = ref.watch(trainersArr);
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          // width: 355,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                sectionTitle,
-                style: Theme.of(context).textTheme.headlineSmall,
+    return trainersAsync.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stack) => Center(child: Text('Error: $error')),
+      data: (trainers) {
+        final sectionTrainersList = trainers
+            .where((item) => item.typeOfSpecialization.title == sectionTitle)
+            .toList();
+
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    sectionTitle,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  const SizedBox(height: 17),
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.6,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 10,
+                    ),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: sectionTrainersList.length,
+                    itemBuilder: (context, index) {
+                      return TrainerCard(
+                        imagePath: sectionTrainersList[index].imagePath,
+                        trainerName: sectionTrainersList[index].name,
+                        trainerType: sectionTrainersList[index].trainerType,
+                        trainerId: sectionTrainersList[index].id,
+                      );
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(height: 17),
-
-              // SizedBox(
-              //   height: 250,
-              //   child: ListView.builder(
-              //     scrollDirection: Axis.horizontal,
-              //     shrinkWrap: true,
-              //     physics: const NeverScrollableScrollPhysics(),
-              //     itemCount: sectionTrainersList.length,
-              //     itemBuilder: (context, index) {
-              //       return TrainerCard(
-              //         imagePath: sectionTrainersList[index].imagePath,
-              //         trainerName: sectionTrainersList[index].name,
-              //         trainerType: sectionTrainersList[index].trainerType,
-              //         trainerId: sectionTrainersList[index].id,
-              //       );
-              //     },
-              //   ),
-              // ),
-              GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-
-                  childAspectRatio: 0.6,
-
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 10,
-                ),
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: sectionTrainersList.length,
-                itemBuilder: (context, index) {
-                  return TrainerCard(
-                    imagePath: sectionTrainersList[index].imagePath,
-                    trainerName: sectionTrainersList[index].name,
-                    trainerType: sectionTrainersList[index].trainerType,
-                    trainerId: sectionTrainersList[index].id,
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 30),
-      ],
+            ),
+            const SizedBox(height: 30),
+          ],
+        );
+      },
     );
   }
 }

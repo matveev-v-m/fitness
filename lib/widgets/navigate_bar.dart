@@ -11,29 +11,47 @@ class NavigateBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final trainers = ref.watch(originalTrainersArr);
-    final sectionTitleList = Set.from(
-      trainers.map((trainer) => trainer.typeOfSpecialization.title),
-    );
+    final trainersAsync = ref.watch(originalTrainersArr);
 
-    return SizedBox(
-      height: 28,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 22),
-        children: [
-          ...sectionTitleList.map(
-            (item) => Padding(
-              padding: const EdgeInsets.only(right: 7),
-              child: NavigateButton(
-                text: item[0].toUpperCase() + item.substring(1).toLowerCase(),
-                targetKey: sectionKeys[item]!,
-              ),
+    return trainersAsync.when(
+      loading: () => const SizedBox(height: 28, child: SizedBox()),
+      error: (error, stack) => SizedBox(
+        height: 28,
+        child: Center(
+          child: Text(
+            'Печально 😭',
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+              color: Theme.of(context).colorScheme.error,
             ),
           ),
-        ],
+        ),
       ),
-    );
+      data: (trainers) {
+        final sectionTitleList = Set.from(
+          trainers.map((trainer) => trainer.typeOfSpecialization.title),
+        );
+
+        return SizedBox(
+          height: 28,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 22),
+            children: [
+              ...sectionTitleList.map(
+                (item) => Padding(
+                  padding: const EdgeInsets.only(right: 7),
+                  child: NavigateButton(
+                    text:
+                        item[0].toUpperCase() + item.substring(1).toLowerCase(),
+                    targetKey: sectionKeys[item]!,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }, // <-- Закрывающая скобка для data
+    ); // <-- Закрывающая скобка для when
   }
 }
 
